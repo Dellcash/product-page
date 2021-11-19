@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap");
+
+body {
+	font-family: "Commissioner", sans-serif;
+	background-color: #f4f4f4;
+}
+/* prevent flashing page whenever page reload */
+[v-cloak] {
+	display: none;
+}
+.menu:last-child {
+	border-bottom: none;
+}
+input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 3px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 2px solid #bbbbbb;
+  background-color: #e7e6e7;
+  border-radius: 50%;
+}
+
+/* appearance for checked radiobutton */
+input[type="radio"]:checked {
+  background-color: hsl(176, 72%, 28%);
+  border-color: hsl(176, 72%, 28%);
+}
+input[type="radio"]:checked + label{
+  color: hsl(176, 72%, 28%); //text-blue
+}

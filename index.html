@@ -19,19 +19,97 @@
 		<title>Crowdfunding product page</title>
 	</head>
 	<body>
-		<!-- hero -->
-		<div class="w-full h-full">
-			<img src="./images/image-hero-mobile.jpg" class="relative" />
-			<!-- logo and hamburger menu -->
+		<div v-scope class="relative" :class="open === !open ? 'opacity-10' : ''">
+			<!-- hero -->
+			<div class="w-full h-full">
+				<img src="./images/image-hero-mobile.jpg" class="relative" />
+				<!-- logo and hamburger menu -->
+				<div
+					v-scope
+					class="absolute top-0 flex items-center justify-between w-full pt-10 px-7"
+				>
+					<img src="./images/logo.svg" alt="" />
+					<button v-cloak @click="openMenu = !openMenu">
+						<img v-if="!openMenu" src="./images/icon-hamburger.svg" alt="" />
+						<img v-else src="./images/icon-close-menu.svg" alt="" />
+					</button>
+				</div>
+				<!-- menu -->
+				<div
+					v-if="openMenu"
+					v-scope
+					class="absolute top-0 mt-24 bg-white rounded-lg w-80 mx-7"
+					style="z-index: 1; box-shadow: 0px 35px 170px 40px #000c"
+				>
+					<h1
+						v-cloak
+						v-for="tab in tabs"
+						:key="tab"
+						class="p-5 font-semibold border-b menu"
+					>
+						{{ tab }}
+					</h1>
+				</div>
+			</div>
+			<!-- box 1 -->
 			<div
-				v-scope
-				class="absolute top-0 flex items-center justify-between w-full pt-10 px-7 "
+				class="relative px-5 pt-16 text-center bg-white rounded-lg w-80 mx-7"
+				style="position: absolute; top: 15rem"
 			>
-				<img src="./images/logo.svg" alt="" />
-				<button @click="open = !open">
-					<img v-if="!open" src="./images/icon-hamburger.svg" alt="" />
-					<img v-else src="./images/icon-close-menu.svg" alt="" />
-				</button>
+				<img
+					src="./images/logo-mastercraft.svg"
+					style="position: absolute; top: -28px; right: 135px"
+				/>
+				<h1 class="text-2xl font-semibold leading-7 tracking-tight">
+					Mastercraft Bamboo <br />
+					Monitor Riser
+				</h1>
+				<p class="py-6 text-xs font-thin">
+					A beautiful & handcrafted monitor stand to reduce neck and eye strain.
+				</p>
+				<div class="flex items-center justify-between pb-10">
+					<button
+						class="px-12 py-4 text-white rounded-full"
+						style="background-color: hsl(176, 50%, 47%)"
+						@click="openModal = !openModal"
+					>
+						Back this project
+					</button>
+					<object data="./images/icon-bookmark.svg" class=""></object>
+				</div>
+			</div>
+			<!-- modal -->
+			<div
+				v-if="!openModal"
+				v-scope
+				class="absolute top-0 mt-32 bg-white rounded-lg shadow-2xl py-7 px-7 w-80 mx-7"
+			>
+				<!-- title & close button -->
+				<div class="flex items-center justify-between">
+					<h1 class="text-xl font-semibold">Back this project</h1>
+					<button>
+						<img
+							src="./images/icon-close-modal.svg"
+							@click="openModal = false"
+						/>
+					</button>
+				</div>
+				<p class="pt-5 text-sm tracking-tight text-gray-500">
+					Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
+					the world?
+				</p>
+				<!-- plage -->
+				<div class="px-5 border-2 rounded-lg py-7 mt-7">
+					<div class="flex items-center">
+						<input type="radio" id="plage" />
+						<label for="plage" class="pl-3 font-semibold"><span>Plage with no reward</span></label>
+					</div>
+					<p class="pt-8 tracking-tighter text-left text-gray-400">
+						Choose to support us without a reward if you simply believe in our
+						project. As a backer, you will be signed up to receive product
+						updates via email.
+					</p>
+				</div>
 			</div>
 		</div>
 
