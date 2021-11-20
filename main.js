@@ -1,6 +1,7 @@
 PetiteVue.createApp({
   openMenu: false,
   openModal: false,
+  bookmarked: false,
   selectedPledge: false,
   selectedBambo: false,
   selectedBlackEdition: false,
@@ -29,5 +30,5 @@ PetiteVue.createApp({
       pledge: 'Pledge $200 or more',
       description: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you! You'll be added to a special Backer member list. Shipping is included",
       quantity: 0
-    }
+    },
 }).mount()

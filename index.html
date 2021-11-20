@@ -80,7 +80,7 @@
 			</div>
 			<!-- modal -->
 			<div
-        v-show="!successModal"
+				v-show="!successModal"
 				v-if="openModal"
 				class="absolute top-0 mt-32 bg-white rounded-lg shadow-2xl py-7 px-7 w-80 mx-7"
 			>
@@ -98,7 +98,10 @@
 					Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
 					the world?
 				</p>
-				<form @submit.prevent="" class="flex flex-col items-center mt-8">
+				<form
+					@submit.prevent=""
+					class="flex flex-col items-center mt-8"
+				>
 					<!-- Pledge with no reward -->
 					<div v-cloak class="w-full pb-8 mb-5 border-2 rounded-lg">
 						<div class="flex items-center px-5 pt-8">
@@ -160,6 +163,7 @@
 									>
 								</div>
 								<button
+									@click="successModal = true"
 									class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
 									style="background-color: hsl(176, 50%, 47%)"
 								>
@@ -214,6 +218,7 @@
 									>
 								</div>
 								<button
+									@click="successModal = true"
 									class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
 									style="background-color: hsl(176, 50%, 47%)"
 								>
@@ -280,7 +285,10 @@
 				</form>
 			</div>
 			<!-- success modal -->
-			<div v-if="successModal" class="absolute mx-6 text-center bg-white rounded-lg shadow-2xl top-1/2">
+			<div
+				v-if="successModal"
+				class="absolute mx-6 text-center bg-white rounded-lg shadow-2xl top-1/2"
+			>
 				<img src="./images/icon-check.svg" class="pt-8 m-auto" />
 				<h1 class="py-6 text-xl font-bold">Thanks for your support!</h1>
 				<p class="px-6 text-sm text-gray-500">
@@ -289,7 +297,7 @@
 					completed.
 				</p>
 				<button
-          @click="successModal = false"
+					@click="successModal = false"
 					class="px-8 py-3 my-10 font-semibold text-white rounded-full"
 					style="background-color: hsl(176, 50%, 47%)"
 				>
