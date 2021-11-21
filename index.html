@@ -19,7 +19,7 @@
 		<title>Crowdfunding product page</title>
 	</head>
 	<body>
-		<div v-scope class="relative">
+		<div v-scope class="relative ">
 			<!-- hero -->
 			<div class="w-full h-full">
 				<img src="./images/image-hero-mobile.jpg" class="relative lg:hidden" />
@@ -40,7 +40,7 @@
 							v-cloak
 							v-for="tab in tabs"
 							:key="tab"
-							class="ml-5 font-thin text-white"
+							class="ml-5 font-thin text-white cursor-pointer hover:text-blue-100"
 						>
 							{{ tab }}
 						</h1>
@@ -68,30 +68,39 @@
 				<div
 					class="relative px-5 pt-16 text-center bg-white border rounded-lg w-80 mx-7 lg:w-6/12 box-1"
 				>
-					<img
-						src="./images/logo-mastercraft.svg"
-						class="m-logo"
-					/>
-					<h1 class="text-2xl font-semibold leading-7 tracking-tight lg:text-3xl">
+					<img src="./images/logo-mastercraft.svg" class="m-logo" />
+					<h1
+						class="text-2xl font-semibold leading-7 tracking-tight lg:text-3xl"
+					>
 						Mastercraft Bamboo <br class="lg:hidden" />
 						Monitor Riser
 					</h1>
-					<p class="py-6 text-xs font-thin lg:text-lg lg:pt-2 lg:text-gray-400 lg:tracking-tight">
+					<p
+						class="py-6 text-xs font-thin lg:text-lg lg:pt-2 lg:text-gray-400 lg:tracking-tight"
+					>
 						A beautiful & handcrafted monitor stand to reduce neck and eye
 						strain.
 					</p>
-					<div class="flex items-center justify-between pb-10 lg:mt-2">
+					<div class="flex items-center justify-between pb-10 lg:mt-2 lg:px-7">
 						<button
-							class="px-12 py-4 text-white rounded-full"
-							style="background-color: hsl(176, 50%, 47%)"
+							class="px-12 py-4 text-white rounded-full bg-m-cyan hover:bg-dark-cyan"
 							@click="openModal = !openModal"
 						>
 							Back this project
 						</button>
-						<object data="./images/icon-bookmark.svg" class="lg:hidden"></object>
-						<button class="relative hidden py-4 pl-10 font-semibold bg-gray-200 rounded-r-full pr-7 lg:flex">
+						<object
+							data="./images/icon-bookmark.svg"
+							class="lg:hidden"
+						></object>
+						<button
+							class="relative hidden py-4 pl-10 font-semibold bg-gray-200 rounded-r-full pr-7 lg:flex"
+						>
 							Bookmark
-							<object data="./images/icon-bookmark.svg" class="absolute" style="right: 7rem; top:0"></object>
+							<object
+								data="./images/icon-bookmark.svg"
+								class="absolute"
+								style="right: 7rem; top: 0"
+							></object>
 						</button>
 					</div>
 				</div>
@@ -131,15 +140,16 @@
 								>
 							</div>
 							<p
-								class="px-5 text-sm tracking-tight text-left text-gray-500 pb-8s pt-7"
+								class="px-5 text-sm tracking-tight text-left text-gray-500 pb-8s pt-7 desc-modal lg:pt-3"
 							>
 								{{ pledge.description }}
 							</p>
 						</div>
 						<!-- Bamboo Stand -->
-						<div v-cloak class="w-full mb-5 border-2 rounded-lg">
-							<div class="flex items-center px-5 pt-8">
-								<input
+						<div v-cloak class="w-full mb-5 border-2 rounded-lg lg:pb-2">
+							<div class="flex items-center px-5 pt-8 lg:justify-between">
+								<div class="flex items-center ">
+									<input
 									type="radio"
 									id="html"
 									name="fav_language"
@@ -148,23 +158,28 @@
 								/>
 								 
 								<label for="html" class="ml-4 text-sm font-semibold"
-									>{{ bambo.title }} <br />
-									<span class="font-normal" style="color: hsl(176, 50%, 47%)"
+									>{{ bambo.title }} <br class="lg:hidden" />
+									<span class="font-normal lg:pl-3" style="color: hsl(176, 50%, 47%)"
 										>{{ bambo.pledge }}</span
 									></label
 								>
+								</div>
+								<h1 class="hidden text-xl font-semibold lg:block">
+									{{ bambo.quantity }}
+									<span class="text-sm font-normal text-gray-500">left</span>
+								</h1>
 							</div>
 							<p
-								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
+								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7 desc-modal lg:pt-3"
 							>
 								{{ bambo.description }}
 							</p>
-							<h1 class="px-5 pb-5 text-xl font-semibold">
+							<h1 class="px-5 pb-5 text-xl font-semibold lg:hidden">
 								{{ bambo.quantity }}
 								<span class="text-sm font-normal text-gray-500">left</span>
 							</h1>
 							<!-- payment -->
-							<div v-if="selectedBambo" class="py-6 border-t">
+							<div v-if="selectedBambo" class="py-6 border-t lg:flex lg:items-baseline lg:justify-around">
 								<h1 class="pb-3 font-normal text-center text-gray-500">
 									Enter your pledge
 								</h1>
@@ -192,9 +207,10 @@
 							</div>
 						</div>
 						<!-- Black Edition Stand -->
-						<div v-cloak class="w-full mb-5 border-2 rounded-lg">
-							<div class="flex items-center px-5 pt-8">
-								<input
+						<div v-cloak class="w-full mb-5 border-2 rounded-lg lg:pb-2">
+							<div class="flex items-center px-5 pt-8 lg:justify-between">
+								<div class="flex items-center ">
+									<input
 									type="radio"
 									id="html"
 									name="fav_language"
@@ -203,23 +219,28 @@
 								/>
 								 
 								<label for="html" class="ml-4 text-sm font-semibold"
-									>{{ blackEdition.title }} <br />
-									<span class="font-normal" style="color: hsl(176, 50%, 47%)"
+									>{{ blackEdition.title }} <br class="lg:hidden" />
+									<span class="font-normal lg:pl-3" style="color: hsl(176, 50%, 47%)"
 										>{{ blackEdition.pledge }}</span
 									></label
 								>
+								</div>
+								<h1 class="hidden text-xl font-semibold lg:block">
+									{{ blackEdition.quantity }}
+									<span class="text-sm font-normal text-gray-500">left</span>
+								</h1>
 							</div>
 							<p
-								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
+								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7 desc-modal lg:pt-3"
 							>
 								{{ blackEdition.description }}
 							</p>
-							<h1 class="px-5 pb-5 text-xl font-semibold">
+							<h1 class="px-5 pb-5 text-xl font-semibold lg:hidden">
 								{{ blackEdition.quantity }}
 								<span class="text-sm font-normal text-gray-500">left</span>
 							</h1>
 							<!-- payment -->
-							<div v-if="selectedBlackEdition" class="py-6 border-t">
+							<div v-if="selectedBlackEdition" class="py-6 border-t lg:flex lg:items-baseline lg:justify-around">
 								<h1 class="pb-3 font-normal text-center text-gray-500">
 									Enter your pledge
 								</h1>
@@ -247,9 +268,10 @@
 							</div>
 						</div>
 						<!-- Mahogany Special Edition -->
-						<div v-cloak class="w-full border-2 rounded-lg">
-							<div class="flex items-center px-5 pt-8">
-								<input
+						<div v-cloak class="w-full border-2 rounded-lg lg:pb-2">
+							<div class="flex items-center px-5 pt-8 lg:justify-between">
+								<div class="flex items-center ">
+									<input
 									type="radio"
 									id="html"
 									name="fav_language"
@@ -257,24 +279,29 @@
 									v-model="selectedMahogany"
 								/>
 								 
-								<label for="html" class="ml-4 text-sm font-semibold"
-									>{{ mahogany.title }} <br />
-									<span class="font-normal" style="color: hsl(176, 50%, 47%)"
+								<label for="html" class="ml-4 text-sm font-semibold opacity-60"
+									>{{ mahogany.title }} <br class="lg:hidden" />
+									<span class="font-normal lg:pl-3" style="color: hsl(176, 50%, 47%)"
 										>{{ mahogany.pledge }}</span
 									></label
 								>
+								</div>
+								<h1 class="hidden text-xl font-semibold lg:block">
+									{{ mahogany.quantity }}
+									<span class="text-sm font-normal text-gray-500">left</span>
+								</h1>
 							</div>
 							<p
-								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
+								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7 desc-modal lg:pt-3"
 							>
 								{{ mahogany.description }}
 							</p>
-							<h1 class="px-5 pb-5 text-xl font-semibold">
+							<h1 class="px-5 pb-5 text-xl font-semibold lg:hidden">
 								{{ mahogany.quantity }}
 								<span class="text-sm font-normal text-gray-500">left</span>
 							</h1>
 							<!-- payment -->
-							<div v-if="selectedMahogany" class="py-6 border-t">
+							<div v-if="selectedMahogany" class="py-6 border-t lg:flex lg:items-baseline lg:justify-around">
 								<h1 class="pb-3 font-normal text-center text-gray-500">
 									Enter your pledge
 								</h1>
@@ -306,7 +333,7 @@
 				<!-- success modal -->
 				<div
 					v-if="successModal"
-					class="absolute mx-6 text-center bg-white rounded-lg shadow-2xl top-1/2"
+					class="absolute mx-6 text-center bg-white rounded-lg shadow-2xl top-1/2 lg:w-1/3"
 				>
 					<img src="./images/icon-check.svg" class="pt-8 m-auto" />
 					<h1 class="py-6 text-xl font-bold">Thanks for your support!</h1>
@@ -325,27 +352,40 @@
 				</div>
 				<!-- box 2 -->
 				<div
-					class="absolute py-10 text-center bg-white border rounded-lg mx-7 w-80 lg:w-6/12"
-					style="top: 35rem; z-index: -1"
+					class="absolute py-10 text-center bg-white border rounded-lg mx-7 w-80 lg:w-6/12 lg:px-5 box-2"
 				>
 					<!-- content -->
-					<div>
-						<h1 class="mb-5 text-3xl font-bold leading-7">
-							$89,914 <br />
-							<span class="text-sm font-thin text-gray-600"
-								>of $100,000 backed</span
+					<div class="lg:grid lg:grid-cols-4 lg:divide-x lg:mb-10">
+						<div>
+							<h1 class="mb-5 text-3xl font-bold leading-7 lg:mb-0">
+								$89,914 <br />
+								<span class="text-sm font-thin text-gray-600"
+									>of $100,000 backed</span
+								>
+							</h1>
+						</div>
+						<div class="w-1/4 m-auto mt-5 border lg:hidden"></div>
+						<div>
+							<h1
+								class="mb-5 text-3xl font-bold leading-7 pt-7 lg:mb-0 lg:pt-0"
 							>
-						</h1>
-						<div class="w-1/4 m-auto mt-5 border"></div>
-						<h1 class="mb-5 text-3xl font-bold leading-7 pt-7">
-							5,007<br />
-							<span class="text-sm font-thin text-gray-600">total backers</span>
-						</h1>
-						<div class="w-1/4 m-auto mt-5 border"></div>
-						<h1 class="text-3xl font-bold leading-7 mb-7 pt-7">
-							56<br />
-							<span class="text-sm font-thin text-gray-600">days left</span>
-						</h1>
+								5,007<br />
+								<span class="text-sm font-thin text-gray-600"
+									>total backers</span
+								>
+							</h1>
+						</div>
+						<div class="w-1/4 m-auto mt-5 border lg:hidden"></div>
+						<div>
+							<h1
+								class="mb-5 text-3xl font-bold leading-7 pt-7 lg:mb-0 lg:pt-0"
+							>
+								5,007<br />
+								<span class="text-sm font-thin text-gray-600"
+									>total backers</span
+								>
+							</h1>
+						</div>
 					</div>
 					<!-- progress bar -->
 					<div class="w-70 mx-7">
@@ -361,8 +401,7 @@
 				</div>
 				<!-- box 3 -->
 				<div
-					class="absolute px-5 py-10 text-left bg-white border rounded-lg mx-7 w-80 lg:w-6/12"
-					style="top: 61.3rem; z-index: -1"
+					class="absolute px-5 py-10 mb-10 text-left bg-white border rounded-lg mx-7 w-80 lg:w-6/12 lg:px-8 box-3"
 				>
 					<!-- content -->
 					<div>
@@ -384,7 +423,7 @@
 					</div>
 					<!-- bamboo box -->
 					<div v-cloak class="p-5 text-left border rounded-lg">
-						<h1 class="font-bold tracking-tighter">
+						<h1 class="font-bold tracking-tighter lg:flex lg:items-center lg:justify-between">
 							{{ bambo.title }} <br /><span
 								class="font-normal tracking-tight"
 								style="color: hsl(176, 50%, 47%)"
@@ -392,20 +431,22 @@
 							>
 						</h1>
 						<p class="text-sm text-gray-500 py-7">{{ bambo.description }}</p>
-						<h1 class="pb-6 text-3xl font-bold">
-							{{ bambo.quantity }}
-							<span class="text-lg text-gray-500">left</span>
-						</h1>
-						<button
-							class="py-4 text-xs font-semibold text-white rounded-full px-7"
-							style="background-color: hsl(176, 50%, 47%)"
-						>
-							{{ bambo.selected }}
-						</button>
+						<div class="lg:flex lg:items-center lg:justify-between lg:pb-2">
+							<h1 class="pb-6 text-3xl font-bold lg:pb-0">
+								{{ bambo.quantity }}
+								<span class="text-lg text-gray-500">left</span>
+							</h1>
+							<button
+								class="py-4 text-xs font-semibold text-white rounded-full px-7"
+								style="background-color: hsl(176, 50%, 47%)"
+							>
+								{{ bambo.selected }}
+							</button>
+						</div>
 					</div>
 					<!-- blackEdition box -->
 					<div v-cloak class="p-5 my-6 text-left border rounded-lg">
-						<h1 class="font-bold tracking-tighter">
+						<h1 class="font-bold tracking-tighter lg:flex lg:items-center lg:justify-between">
 							{{ blackEdition.title }} <br /><span
 								class="font-normal tracking-tight"
 								style="color: hsl(176, 50%, 47%)"
@@ -415,20 +456,22 @@
 						<p class="text-sm text-gray-500 py-7">
 							{{ blackEdition.description }}
 						</p>
-						<h1 class="pb-6 text-3xl font-bold">
-							{{ blackEdition.quantity }}
-							<span class="text-lg text-gray-500">left</span>
-						</h1>
-						<button
-							class="py-4 text-xs font-semibold text-white rounded-full px-7"
-							style="background-color: hsl(176, 50%, 47%)"
-						>
-							{{ blackEdition.selected }}
-						</button>
+						<div class="lg:flex lg:items-center lg:justify-between lg:pb-2">
+							<h1 class="pb-6 text-3xl font-bold lg:pb-0">
+								{{ blackEdition.quantity }}
+								<span class="text-lg text-gray-500">left</span>
+							</h1>
+							<button
+								class="py-4 text-xs font-semibold text-white rounded-full px-7"
+								style="background-color: hsl(176, 50%, 47%)"
+							>
+								{{ blackEdition.selected }}
+							</button>
+						</div>
 					</div>
 					<!-- mahogany box -->
-					<div v-cloak class="p-5 text-left border rounded-lg">
-						<h1 class="font-bold tracking-tighter">
+					<div v-cloak class="p-5 text-left border rounded-lg opacity-60">
+						<h1 class="font-bold tracking-tighter lg:flex lg:items-center lg:justify-between">
 							{{ mahogany.title }} <br /><span
 								class="font-normal tracking-tight"
 								style="color: hsl(176, 50%, 47%)"
@@ -436,16 +479,18 @@
 							>
 						</h1>
 						<p class="text-sm text-gray-500 py-7">{{ mahogany.description }}</p>
-						<h1 class="pb-6 text-3xl font-bold">
-							{{ mahogany.quantity }}
-							<span class="text-lg text-gray-500">left</span>
-						</h1>
-						<button
-							class="py-4 text-xs font-semibold text-white rounded-full px-7"
-							style="background-color: hsl(176, 50%, 47%)"
-						>
-							{{ mahogany.selected }}
-						</button>
+						<div class="lg:flex lg:items-center lg:justify-between lg:pb-2">
+							<h1 class="pb-6 text-3xl font-bold lg:pb-0">
+								{{ mahogany.quantity }}
+								<span class="text-lg text-gray-500">left</span>
+							</h1>
+							<button
+								class="py-4 text-xs font-semibold text-white rounded-full px-7"
+								style="background-color: hsl(176, 50%, 47%)"
+							>
+								{{ mahogany.selected }}
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -4,6 +4,12 @@ body {
 	font-family: "Commissioner", sans-serif;
 	background-color: #f4f4f4;
 }
+.bg-m-cyan{
+	background-color: hsl(176, 50%, 47%)
+}
+.bg-dark-cyan{
+	background-color: hsl(176, 72%, 28%)
+}
 /* prevent flashing page whenever page reload */
 [v-cloak] {
 	display: none;
@@ -36,6 +42,11 @@ input[type="radio"]:checked {
 input[type="radio"]:checked + label {
 	color: hsl(176, 72%, 28%);
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 .box-1 {
 	position: absolute;
 	top: 15rem;
@@ -44,14 +55,30 @@ input[type="radio"]:checked + label {
 	.box-1 {
 		top: 17rem;
 	}
-  .m-logo{
-    right: 0;
-    left: 20rem
-  }
+	.m-logo {
+		right: 0;
+		left: 20rem;
+	}
 }
-
 .m-logo {
 	position: absolute;
 	top: -28px;
 	right: 135px;
 }
+.box-2 {
+	top: 35rem;
+	z-index: -1;
+}
+.box-3 {
+	top: 60.9rem;
+	z-index: -1;
+}
+@media (min-width: 768px) {
+	.box-3 {
+		top: 48.5rem;
+	}
+	.desc-modal{
+		padding-left: 4rem;
+	}
+}
+
