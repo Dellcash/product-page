@@ -22,23 +22,30 @@
 		<div v-scope class="relative">
 			<!-- hero -->
 			<div class="w-full h-full">
-				<img src="./images/image-hero-mobile.jpg" class="relative" />
+				<img src="./images/image-hero-mobile.jpg" class="relative lg:hidden" />
+				<img src="./images/image-hero-desktop.jpg" class="hidden lg:block" />
 				<!-- logo and hamburger menu -->
 				<div
 					v-scope
 					class="absolute top-0 flex items-center justify-between w-full pt-10 px-7"
 				>
-					<img src="./images/logo.svg" alt="" />
-					<button v-cloak @click="openMenu = !openMenu">
+					<img src="./images/logo.svg" class="lg:ml-40" />
+					<button v-cloak @click="openMenu = !openMenu" class="lg:hidden">
 						<img v-if="!openMenu" src="./images/icon-hamburger.svg" alt="" />
 						<img v-else src="./images/icon-close-menu.svg" alt="" />
 					</button>
+					<!-- desktop mobile -->
+					<div class="hidden mr-40 lg:flex">
+						<h1 v-cloak v-for="tab in tabs" :key="tab" class="ml-5 font-thin text-white">
+							{{ tab }}
+						</h1>
+					</div>
 				</div>
-				<!-- menu -->
+				<!-- menu mobile -->
 				<div
 					v-if="openMenu"
 					v-scope
-					class="absolute top-0 mt-24 bg-white rounded-lg w-80 mx-7"
+					class="absolute top-0 mt-24 bg-white rounded-lg w-80 mx-7 lg:hidden"
 					style="z-index: 1; box-shadow: 0px 35px 170px 40px #000c"
 				>
 					<h1
@@ -51,376 +58,387 @@
 					</h1>
 				</div>
 			</div>
-			<!-- box 1 -->
-			<div
-				class="relative px-5 pt-16 text-center bg-white border rounded-lg w-80 mx-7"
-				style="position: absolute; top: 15rem"
-			>
-				<img
-					src="./images/logo-mastercraft.svg"
-					style="position: absolute; top: -28px; right: 135px"
-				/>
-				<h1 class="text-2xl font-semibold leading-7 tracking-tight">
-					Mastercraft Bamboo <br />
-					Monitor Riser
-				</h1>
-				<p class="py-6 text-xs font-thin">
-					A beautiful & handcrafted monitor stand to reduce neck and eye strain.
-				</p>
-				<div class="flex items-center justify-between pb-10">
-					<button
-						class="px-12 py-4 text-white rounded-full"
-						style="background-color: hsl(176, 50%, 47%)"
-						@click="openModal = !openModal"
-					>
-						Back this project
-					</button>
-					<object data="./images/icon-bookmark.svg" class=""></object>
-				</div>
-			</div>
-			<!-- modal -->
-			<div
-				v-show="!successModal"
-				v-if="openModal"
-				class="absolute top-0 mt-32 bg-white rounded-lg filter drop-shadow-lg py-7 px-7 w-80 mx-7"
-			>
-				<!-- title & close button -->
-				<div class="flex items-center justify-between">
-					<h1 class="text-xl font-semibold">Back this project</h1>
-					<button>
-						<img
-							src="./images/icon-close-modal.svg"
-							@click="openModal = false"
-						/>
-					</button>
-				</div>
-				<p class="pt-5 text-sm tracking-tight text-gray-500">
-					Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
-					the world?
-				</p>
-				<form @submit.prevent="" class="flex flex-col items-center mt-8">
-					<!-- Pledge with no reward -->
-					<div v-cloak class="w-full pb-8 mb-5 border-2 rounded-lg">
-						<div class="flex items-center px-5 pt-8">
-							<input type="radio" id="html" name="fav_language" value="HTML" />
-							 
-							<label for="html" class="ml-4 text-sm font-semibold"
-								>{{ pledge.title }}</label
-							>
-						</div>
-						<p
-							class="px-5 text-sm tracking-tight text-left text-gray-500 pb-8s pt-7"
+			<div>
+				<!-- box 1 -->
+				<div
+					class="relative px-5 pt-16 text-center bg-white border rounded-lg w-80 mx-7"
+					style="position: absolute; top: 15rem"
+				>
+					<img
+						src="./images/logo-mastercraft.svg"
+						style="position: absolute; top: -28px; right: 135px"
+					/>
+					<h1 class="text-2xl font-semibold leading-7 tracking-tight">
+						Mastercraft Bamboo <br />
+						Monitor Riser
+					</h1>
+					<p class="py-6 text-xs font-thin">
+						A beautiful & handcrafted monitor stand to reduce neck and eye
+						strain.
+					</p>
+					<div class="flex items-center justify-between pb-10">
+						<button
+							class="px-12 py-4 text-white rounded-full"
+							style="background-color: hsl(176, 50%, 47%)"
+							@click="openModal = !openModal"
 						>
-							{{ pledge.description }}
-						</p>
+							Back this project
+						</button>
+						<object data="./images/icon-bookmark.svg" class=""></object>
 					</div>
-					<!-- Bamboo Stand -->
-					<div v-cloak class="w-full mb-5 border-2 rounded-lg">
-						<div class="flex items-center px-5 pt-8">
-							<input
-								type="radio"
-								id="html"
-								name="fav_language"
-								value="HTML"
-								v-model="selectedBambo"
+				</div>
+				<!-- modal -->
+				<div
+					v-show="!successModal"
+					v-if="openModal"
+					class="absolute top-0 mt-32 bg-white rounded-lg filter drop-shadow-lg py-7 px-7 w-80 mx-7"
+				>
+					<!-- title & close button -->
+					<div class="flex items-center justify-between">
+						<h1 class="text-xl font-semibold">Back this project</h1>
+						<button>
+							<img
+								src="./images/icon-close-modal.svg"
+								@click="openModal = false"
 							/>
-							 
-							<label for="html" class="ml-4 text-sm font-semibold"
-								>{{ bambo.title }} <br />
-								<span class="font-normal" style="color: hsl(176, 50%, 47%)"
-									>{{ bambo.pledge }}</span
-								></label
-							>
-						</div>
-						<p
-							class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
-						>
-							{{ bambo.description }}
-						</p>
-						<h1 class="px-5 pb-5 text-xl font-semibold">
-							{{ bambo.quantity }}
-							<span class="text-sm font-normal text-gray-500">left</span>
-						</h1>
-						<!-- payment -->
-						<div v-if="selectedBambo" class="py-6 border-t">
-							<h1 class="pb-3 font-normal text-center text-gray-500">
-								Enter your pledge
-							</h1>
-							<div class="flex items-center justify-center">
-								<div class="relative flex items-center">
-									<input
-										type="number"
-										placeholder="25"
-										min="25"
-										max="74"
-										class="px-8 py-3 border border-gray-300 rounded-full"
-									/>
-									<span class="absolute text-sm text-gray-400 right-3/4"
-										>$</span
-									>
-								</div>
-								<button
-									@click="successModal = true"
-									class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
-									style="background-color: hsl(176, 50%, 47%)"
+						</button>
+					</div>
+					<p class="pt-5 text-sm tracking-tight text-gray-500">
+						Want to support us in bringing Mastercraft Bamboo Monitor Riser out
+						in the world?
+					</p>
+					<form @submit.prevent="" class="flex flex-col items-center mt-8">
+						<!-- Pledge with no reward -->
+						<div v-cloak class="w-full pb-8 mb-5 border-2 rounded-lg">
+							<div class="flex items-center px-5 pt-8">
+								<input
+									type="radio"
+									id="html"
+									name="fav_language"
+									value="HTML"
+								/>
+								 
+								<label for="html" class="ml-4 text-sm font-semibold"
+									>{{ pledge.title }}</label
 								>
-									Continue
-								</button>
+							</div>
+							<p
+								class="px-5 text-sm tracking-tight text-left text-gray-500 pb-8s pt-7"
+							>
+								{{ pledge.description }}
+							</p>
+						</div>
+						<!-- Bamboo Stand -->
+						<div v-cloak class="w-full mb-5 border-2 rounded-lg">
+							<div class="flex items-center px-5 pt-8">
+								<input
+									type="radio"
+									id="html"
+									name="fav_language"
+									value="HTML"
+									v-model="selectedBambo"
+								/>
+								 
+								<label for="html" class="ml-4 text-sm font-semibold"
+									>{{ bambo.title }} <br />
+									<span class="font-normal" style="color: hsl(176, 50%, 47%)"
+										>{{ bambo.pledge }}</span
+									></label
+								>
+							</div>
+							<p
+								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
+							>
+								{{ bambo.description }}
+							</p>
+							<h1 class="px-5 pb-5 text-xl font-semibold">
+								{{ bambo.quantity }}
+								<span class="text-sm font-normal text-gray-500">left</span>
+							</h1>
+							<!-- payment -->
+							<div v-if="selectedBambo" class="py-6 border-t">
+								<h1 class="pb-3 font-normal text-center text-gray-500">
+									Enter your pledge
+								</h1>
+								<div class="flex items-center justify-center">
+									<div class="relative flex items-center">
+										<input
+											type="number"
+											placeholder="25"
+											min="25"
+											max="74"
+											class="px-8 py-3 border border-gray-300 rounded-full"
+										/>
+										<span class="absolute text-sm text-gray-400 right-3/4"
+											>$</span
+										>
+									</div>
+									<button
+										@click="successModal = true"
+										class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
+										style="background-color: hsl(176, 50%, 47%)"
+									>
+										Continue
+									</button>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- Black Edition Stand -->
-					<div v-cloak class="w-full mb-5 border-2 rounded-lg">
-						<div class="flex items-center px-5 pt-8">
-							<input
-								type="radio"
-								id="html"
-								name="fav_language"
-								value="HTML"
-								v-model="selectedBlackEdition"
-							/>
-							 
-							<label for="html" class="ml-4 text-sm font-semibold"
-								>{{ blackEdition.title }} <br />
-								<span class="font-normal" style="color: hsl(176, 50%, 47%)"
-									>{{ blackEdition.pledge }}</span
-								></label
+						<!-- Black Edition Stand -->
+						<div v-cloak class="w-full mb-5 border-2 rounded-lg">
+							<div class="flex items-center px-5 pt-8">
+								<input
+									type="radio"
+									id="html"
+									name="fav_language"
+									value="HTML"
+									v-model="selectedBlackEdition"
+								/>
+								 
+								<label for="html" class="ml-4 text-sm font-semibold"
+									>{{ blackEdition.title }} <br />
+									<span class="font-normal" style="color: hsl(176, 50%, 47%)"
+										>{{ blackEdition.pledge }}</span
+									></label
+								>
+							</div>
+							<p
+								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
 							>
+								{{ blackEdition.description }}
+							</p>
+							<h1 class="px-5 pb-5 text-xl font-semibold">
+								{{ blackEdition.quantity }}
+								<span class="text-sm font-normal text-gray-500">left</span>
+							</h1>
+							<!-- payment -->
+							<div v-if="selectedBlackEdition" class="py-6 border-t">
+								<h1 class="pb-3 font-normal text-center text-gray-500">
+									Enter your pledge
+								</h1>
+								<div class="flex items-center justify-center">
+									<div class="relative flex items-center">
+										<input
+											type="number"
+											placeholder="25"
+											min="25"
+											max="74"
+											class="px-8 py-3 border border-gray-300 rounded-full"
+										/>
+										<span class="absolute text-sm text-gray-400 right-3/4"
+											>$</span
+										>
+									</div>
+									<button
+										@click="successModal = true"
+										class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
+										style="background-color: hsl(176, 50%, 47%)"
+									>
+										Continue
+									</button>
+								</div>
+							</div>
 						</div>
-						<p
-							class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
+						<!-- Mahogany Special Edition -->
+						<div v-cloak class="w-full border-2 rounded-lg">
+							<div class="flex items-center px-5 pt-8">
+								<input
+									type="radio"
+									id="html"
+									name="fav_language"
+									value="HTML"
+									v-model="selectedMahogany"
+								/>
+								 
+								<label for="html" class="ml-4 text-sm font-semibold"
+									>{{ mahogany.title }} <br />
+									<span class="font-normal" style="color: hsl(176, 50%, 47%)"
+										>{{ mahogany.pledge }}</span
+									></label
+								>
+							</div>
+							<p
+								class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
+							>
+								{{ mahogany.description }}
+							</p>
+							<h1 class="px-5 pb-5 text-xl font-semibold">
+								{{ mahogany.quantity }}
+								<span class="text-sm font-normal text-gray-500">left</span>
+							</h1>
+							<!-- payment -->
+							<div v-if="selectedMahogany" class="py-6 border-t">
+								<h1 class="pb-3 font-normal text-center text-gray-500">
+									Enter your pledge
+								</h1>
+								<div class="flex items-center justify-center">
+									<div class="relative flex items-center">
+										<input
+											type="number"
+											placeholder="25"
+											min="25"
+											max="74"
+											class="px-8 py-3 border border-gray-300 rounded-full"
+										/>
+										<span class="absolute text-sm text-gray-400 right-3/4"
+											>$</span
+										>
+									</div>
+									<button
+										@click="successModal = true"
+										class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
+										style="background-color: hsl(176, 50%, 47%)"
+									>
+										Continue
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- success modal -->
+				<div
+					v-if="successModal"
+					class="absolute mx-6 text-center bg-white rounded-lg shadow-2xl top-1/2"
+				>
+					<img src="./images/icon-check.svg" class="pt-8 m-auto" />
+					<h1 class="py-6 text-xl font-bold">Thanks for your support!</h1>
+					<p class="px-6 text-sm text-gray-500">
+						Your pledge brings us one step closer to sharing Mastercraft Bamboo
+						Monitor Riser worldwide. You will get an email once our campaign is
+						completed.
+					</p>
+					<button
+						@click="closeSuccessModal"
+						class="px-8 py-3 my-10 font-semibold text-white rounded-full"
+						style="background-color: hsl(176, 50%, 47%)"
+					>
+						Got it!
+					</button>
+				</div>
+				<!-- box 2 -->
+				<div
+					class="absolute py-10 text-center bg-white border rounded-lg mx-7 w-80"
+					style="top: 35rem; z-index: -1"
+				>
+					<!-- content -->
+					<div>
+						<h1 class="mb-5 text-3xl font-bold leading-7">
+							$89,914 <br />
+							<span class="text-sm font-thin text-gray-600"
+								>of $100,000 backed</span
+							>
+						</h1>
+						<div class="w-1/4 m-auto mt-5 border"></div>
+						<h1 class="mb-5 text-3xl font-bold leading-7 pt-7">
+							5,007<br />
+							<span class="text-sm font-thin text-gray-600">total backers</span>
+						</h1>
+						<div class="w-1/4 m-auto mt-5 border"></div>
+						<h1 class="text-3xl font-bold leading-7 mb-7 pt-7">
+							56<br />
+							<span class="text-sm font-thin text-gray-600">days left</span>
+						</h1>
+					</div>
+					<!-- progress bar -->
+					<div class="w-70 mx-7">
+						<div
+							class="flex h-3 overflow-hidden text-xs bg-gray-200 rounded-full"
 						>
+							<div
+								style="width: 70%; background-color: hsl(176, 50%, 47%)"
+								class="flex flex-col justify-center text-center text-white shadow-none whitespace-nowrap"
+							></div>
+						</div>
+					</div>
+				</div>
+				<!-- box 3 -->
+				<div
+					class="absolute px-5 py-10 text-left bg-white border rounded-lg mx-7 w-80"
+					style="top: 61.3rem; z-index: -1"
+				>
+					<!-- content -->
+					<div>
+						<h1 class="text-xl font-bold tracking-tighter">
+							About this project
+						</h1>
+						<p class="py-6 text-sm text-gray-500">
+							The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
+							platform that elevates your screen to a more comfortable viewing
+							height. Placing your monitor at eye level has the potential to
+							improve your posture and make you more comfortable while at work,
+							helping you stay focused on the task at hand.
+						</p>
+						<p class="pb-6 text-sm text-gray-500">
+							Featuring artisan craftsmanship, the simplicity of design creates
+							extra desk space below your computer to allow notepads, pens, and
+							USB sticks to be stored under the stand.
+						</p>
+					</div>
+					<!-- bamboo box -->
+					<div v-cloak class="p-5 text-left border rounded-lg">
+						<h1 class="font-bold tracking-tighter">
+							{{ bambo.title }} <br /><span
+								class="font-normal tracking-tight"
+								style="color: hsl(176, 50%, 47%)"
+								>{{ bambo.pledge }}</span
+							>
+						</h1>
+						<p class="text-sm text-gray-500 py-7">{{ bambo.description }}</p>
+						<h1 class="pb-6 text-3xl font-bold">
+							{{ bambo.quantity }}
+							<span class="text-lg text-gray-500">left</span>
+						</h1>
+						<button
+							class="py-4 text-xs font-semibold text-white rounded-full px-7"
+							style="background-color: hsl(176, 50%, 47%)"
+						>
+							{{ bambo.selected }}
+						</button>
+					</div>
+					<!-- blackEdition box -->
+					<div v-cloak class="p-5 my-6 text-left border rounded-lg">
+						<h1 class="font-bold tracking-tighter">
+							{{ blackEdition.title }} <br /><span
+								class="font-normal tracking-tight"
+								style="color: hsl(176, 50%, 47%)"
+								>{{ blackEdition.pledge }}</span
+							>
+						</h1>
+						<p class="text-sm text-gray-500 py-7">
 							{{ blackEdition.description }}
 						</p>
-						<h1 class="px-5 pb-5 text-xl font-semibold">
+						<h1 class="pb-6 text-3xl font-bold">
 							{{ blackEdition.quantity }}
-							<span class="text-sm font-normal text-gray-500">left</span>
+							<span class="text-lg text-gray-500">left</span>
 						</h1>
-						<!-- payment -->
-						<div v-if="selectedBlackEdition" class="py-6 border-t">
-							<h1 class="pb-3 font-normal text-center text-gray-500">
-								Enter your pledge
-							</h1>
-							<div class="flex items-center justify-center">
-								<div class="relative flex items-center">
-									<input
-										type="number"
-										placeholder="25"
-										min="25"
-										max="74"
-										class="px-8 py-3 border border-gray-300 rounded-full"
-									/>
-									<span class="absolute text-sm text-gray-400 right-3/4"
-										>$</span
-									>
-								</div>
-								<button
-									@click="successModal = true"
-									class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
-									style="background-color: hsl(176, 50%, 47%)"
-								>
-									Continue
-								</button>
-							</div>
-						</div>
+						<button
+							class="py-4 text-xs font-semibold text-white rounded-full px-7"
+							style="background-color: hsl(176, 50%, 47%)"
+						>
+							{{ blackEdition.selected }}
+						</button>
 					</div>
-					<!-- Mahogany Special Edition -->
-					<div v-cloak class="w-full border-2 rounded-lg">
-						<div class="flex items-center px-5 pt-8">
-							<input
-								type="radio"
-								id="html"
-								name="fav_language"
-								value="HTML"
-								v-model="selectedMahogany"
-							/>
-							 
-							<label for="html" class="ml-4 text-sm font-semibold"
-								>{{ mahogany.title }} <br />
-								<span class="font-normal" style="color: hsl(176, 50%, 47%)"
-									>{{ mahogany.pledge }}</span
-								></label
+					<!-- mahogany box -->
+					<div v-cloak class="p-5 text-left border rounded-lg">
+						<h1 class="font-bold tracking-tighter">
+							{{ mahogany.title }} <br /><span
+								class="font-normal tracking-tight"
+								style="color: hsl(176, 50%, 47%)"
+								>{{ mahogany.pledge }}</span
 							>
-						</div>
-						<p
-							class="px-5 pb-5 text-sm tracking-tight text-left text-gray-500 pt-7"
-						>
-							{{ mahogany.description }}
-						</p>
-						<h1 class="px-5 pb-5 text-xl font-semibold">
-							{{ mahogany.quantity }}
-							<span class="text-sm font-normal text-gray-500">left</span>
 						</h1>
-						<!-- payment -->
-						<div v-if="selectedMahogany" class="py-6 border-t">
-							<h1 class="pb-3 font-normal text-center text-gray-500">
-								Enter your pledge
-							</h1>
-							<div class="flex items-center justify-center">
-								<div class="relative flex items-center">
-									<input
-										type="number"
-										placeholder="25"
-										min="25"
-										max="74"
-										class="px-8 py-3 border border-gray-300 rounded-full"
-									/>
-									<span class="absolute text-sm text-gray-400 right-3/4"
-										>$</span
-									>
-								</div>
-								<button
-									@click="successModal = true"
-									class="px-6 py-3 ml-3 font-semibold text-white rounded-full"
-									style="background-color: hsl(176, 50%, 47%)"
-								>
-									Continue
-								</button>
-							</div>
-						</div>
+						<p class="text-sm text-gray-500 py-7">{{ mahogany.description }}</p>
+						<h1 class="pb-6 text-3xl font-bold">
+							{{ mahogany.quantity }}
+							<span class="text-lg text-gray-500">left</span>
+						</h1>
+						<button
+							class="py-4 text-xs font-semibold text-white rounded-full px-7"
+							style="background-color: hsl(176, 50%, 47%)"
+						>
+							{{ mahogany.selected }}
+						</button>
 					</div>
-				</form>
-			</div>
-			<!-- success modal -->
-			<div
-				v-if="successModal"
-				class="absolute mx-6 text-center bg-white rounded-lg shadow-2xl top-1/2"
-			>
-				<img src="./images/icon-check.svg" class="pt-8 m-auto" />
-				<h1 class="py-6 text-xl font-bold">Thanks for your support!</h1>
-				<p class="px-6 text-sm text-gray-500">
-					Your pledge brings us one step closer to sharing Mastercraft Bamboo
-					Monitor Riser worldwide. You will get an email once our campaign is
-					completed.
-				</p>
-				<button
-					@click="closeSuccessModal"
-					class="px-8 py-3 my-10 font-semibold text-white rounded-full"
-					style="background-color: hsl(176, 50%, 47%)"
-				>
-					Got it!
-				</button>
-			</div>
-			<!-- box 2 -->
-			<div
-				class="absolute py-10 text-center bg-white border rounded-lg mx-7 w-80"
-				style="top: 35rem; z-index: -1"
-			>
-				<!-- content -->
-				<div>
-					<h1 class="mb-5 text-3xl font-bold leading-7">
-						$89,914 <br />
-						<span class="text-sm font-thin text-gray-600"
-							>of $100,000 backed</span
-						>
-					</h1>
-					<div class="w-1/4 m-auto mt-5 border"></div>
-					<h1 class="mb-5 text-3xl font-bold leading-7 pt-7">
-						5,007<br />
-						<span class="text-sm font-thin text-gray-600">total backers</span>
-					</h1>
-					<div class="w-1/4 m-auto mt-5 border"></div>
-					<h1 class="text-3xl font-bold leading-7 mb-7 pt-7">
-						56<br />
-						<span class="text-sm font-thin text-gray-600">days left</span>
-					</h1>
-				</div>
-				<!-- progress bar -->
-				<div class="w-70 mx-7">
-					<div
-						class="flex h-3 overflow-hidden text-xs bg-gray-200 rounded-full"
-					>
-						<div
-							style="width: 70%; background-color: hsl(176, 50%, 47%)"
-							class="flex flex-col justify-center text-center text-white shadow-none whitespace-nowrap"
-						></div>
-					</div>
-				</div>
-			</div>
-			<!-- box 3 -->
-			<div
-				class="absolute px-5 py-10 text-left bg-white border rounded-lg mx-7 w-80"
-				style="top: 61.3rem; z-index: -1"
-			>
-				<!-- content -->
-				<div>
-					<h1 class="text-xl font-bold tracking-tighter">About this project</h1>
-					<p class="py-6 text-sm text-gray-500">
-						The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
-						platform that elevates your screen to a more comfortable viewing
-						height. Placing your monitor at eye level has the potential to
-						improve your posture and make you more comfortable while at work,
-						helping you stay focused on the task at hand.
-					</p>
-					<p class="pb-6 text-sm text-gray-500">
-						Featuring artisan craftsmanship, the simplicity of design creates
-						extra desk space below your computer to allow notepads, pens, and
-						USB sticks to be stored under the stand.
-					</p>
-				</div>
-				<!-- bamboo box -->
-				<div v-cloak class="p-5 text-left border rounded-lg">
-					<h1 class="font-bold tracking-tighter">
-						{{ bambo.title }} <br /><span
-							class="font-normal tracking-tight"
-							style="color: hsl(176, 50%, 47%)"
-							>{{ bambo.pledge }}</span
-						>
-					</h1>
-					<p class="text-sm text-gray-500 py-7">{{ bambo.description }}</p>
-					<h1 class="pb-6 text-3xl font-bold">
-						{{ bambo.quantity }} <span class="text-lg text-gray-500">left</span>
-					</h1>
-					<button
-						class="py-4 text-xs font-semibold text-white rounded-full px-7"
-						style="background-color: hsl(176, 50%, 47%)"
-					>
-						{{ bambo.selected }}
-					</button>
-				</div>
-				<!-- blackEdition box -->
-				<div v-cloak class="p-5 my-6 text-left border rounded-lg">
-					<h1 class="font-bold tracking-tighter">
-						{{ blackEdition.title }} <br /><span
-							class="font-normal tracking-tight"
-							style="color: hsl(176, 50%, 47%)"
-							>{{ blackEdition.pledge }}</span
-						>
-					</h1>
-					<p class="text-sm text-gray-500 py-7">
-						{{ blackEdition.description }}
-					</p>
-					<h1 class="pb-6 text-3xl font-bold">
-						{{ blackEdition.quantity }}
-						<span class="text-lg text-gray-500">left</span>
-					</h1>
-					<button
-						class="py-4 text-xs font-semibold text-white rounded-full px-7"
-						style="background-color: hsl(176, 50%, 47%)"
-					>
-						{{ blackEdition.selected }}
-					</button>
-				</div>
-				<!-- mahogany box -->
-				<div v-cloak class="p-5 text-left border rounded-lg">
-					<h1 class="font-bold tracking-tighter">
-						{{ mahogany.title }} <br /><span
-							class="font-normal tracking-tight"
-							style="color: hsl(176, 50%, 47%)"
-							>{{ mahogany.pledge }}</span
-						>
-					</h1>
-					<p class="text-sm text-gray-500 py-7">{{ mahogany.description }}</p>
-					<h1 class="pb-6 text-3xl font-bold">
-						{{ mahogany.quantity }}
-						<span class="text-lg text-gray-500">left</span>
-					</h1>
-					<button
-						class="py-4 text-xs font-semibold text-white rounded-full px-7"
-						style="background-color: hsl(176, 50%, 47%)"
-					>
-						{{ mahogany.selected }}
-					</button>
 				</div>
 			</div>
 		</div>
