@@ -53,7 +53,7 @@
 			</div>
 			<!-- box 1 -->
 			<div
-				class="relative px-5 pt-16 text-center bg-white rounded-lg w-80 mx-7"
+				class="relative px-5 pt-16 text-center bg-white border rounded-lg w-80 mx-7"
 				style="position: absolute; top: 15rem"
 			>
 				<img
@@ -82,7 +82,7 @@
 			<div
 				v-show="!successModal"
 				v-if="openModal"
-				class="absolute top-0 mt-32 bg-white rounded-lg shadow-2xl py-7 px-7 w-80 mx-7"
+				class="absolute top-0 mt-32 bg-white rounded-lg filter drop-shadow-lg py-7 px-7 w-80 mx-7"
 			>
 				<!-- title & close button -->
 				<div class="flex items-center justify-between">
@@ -98,10 +98,7 @@
 					Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
 					the world?
 				</p>
-				<form
-					@submit.prevent=""
-					class="flex flex-col items-center mt-8"
-				>
+				<form @submit.prevent="" class="flex flex-col items-center mt-8">
 					<!-- Pledge with no reward -->
 					<div v-cloak class="w-full pb-8 mb-5 border-2 rounded-lg">
 						<div class="flex items-center px-5 pt-8">
@@ -303,6 +300,128 @@
 				>
 					Got it!
 				</button>
+			</div>
+			<!-- box 2 -->
+			<div
+				class="absolute py-10 text-center bg-white border rounded-lg mx-7 w-80"
+				style="top: 35rem; z-index: -1"
+			>
+				<!-- content -->
+				<div>
+					<h1 class="mb-5 text-3xl font-bold leading-7">
+						$89,914 <br />
+						<span class="text-sm font-thin text-gray-600"
+							>of $100,000 backed</span
+						>
+					</h1>
+					<div class="w-1/4 m-auto mt-5 border"></div>
+					<h1 class="mb-5 text-3xl font-bold leading-7 pt-7">
+						5,007<br />
+						<span class="text-sm font-thin text-gray-600">total backers</span>
+					</h1>
+					<div class="w-1/4 m-auto mt-5 border"></div>
+					<h1 class="text-3xl font-bold leading-7 mb-7 pt-7">
+						56<br />
+						<span class="text-sm font-thin text-gray-600">days left</span>
+					</h1>
+				</div>
+				<!-- progress bar -->
+				<div class="w-70 mx-7">
+					<div
+						class="flex h-3 overflow-hidden text-xs bg-gray-200 rounded-full"
+					>
+						<div
+							style="width: 70%; background-color: hsl(176, 50%, 47%)"
+							class="flex flex-col justify-center text-center text-white shadow-none whitespace-nowrap"
+						></div>
+					</div>
+				</div>
+			</div>
+			<!-- box 3 -->
+			<div
+				class="absolute px-5 py-10 text-left bg-white border rounded-lg mx-7 w-80"
+				style="top: 61.3rem; z-index: -1"
+			>
+				<!-- content -->
+				<div>
+					<h1 class="text-xl font-bold tracking-tighter">About this project</h1>
+					<p class="py-6 text-sm text-gray-500">
+						The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
+						platform that elevates your screen to a more comfortable viewing
+						height. Placing your monitor at eye level has the potential to
+						improve your posture and make you more comfortable while at work,
+						helping you stay focused on the task at hand.
+					</p>
+					<p class="pb-6 text-sm text-gray-500">
+						Featuring artisan craftsmanship, the simplicity of design creates
+						extra desk space below your computer to allow notepads, pens, and
+						USB sticks to be stored under the stand.
+					</p>
+				</div>
+				<!-- bamboo box -->
+				<div v-cloak class="p-5 text-left border rounded-lg">
+					<h1 class="font-bold tracking-tighter">
+						{{ bambo.title }} <br /><span
+							class="font-normal tracking-tight"
+							style="color: hsl(176, 50%, 47%)"
+							>{{ bambo.pledge }}</span
+						>
+					</h1>
+					<p class="text-sm text-gray-500 py-7">{{ bambo.description }}</p>
+					<h1 class="pb-6 text-3xl font-bold">
+						{{ bambo.quantity }} <span class="text-lg text-gray-500">left</span>
+					</h1>
+					<button
+						class="py-4 text-xs font-semibold text-white rounded-full px-7"
+						style="background-color: hsl(176, 50%, 47%)"
+					>
+						{{ bambo.selected }}
+					</button>
+				</div>
+				<!-- blackEdition box -->
+				<div v-cloak class="p-5 my-6 text-left border rounded-lg">
+					<h1 class="font-bold tracking-tighter">
+						{{ blackEdition.title }} <br /><span
+							class="font-normal tracking-tight"
+							style="color: hsl(176, 50%, 47%)"
+							>{{ blackEdition.pledge }}</span
+						>
+					</h1>
+					<p class="text-sm text-gray-500 py-7">
+						{{ blackEdition.description }}
+					</p>
+					<h1 class="pb-6 text-3xl font-bold">
+						{{ blackEdition.quantity }}
+						<span class="text-lg text-gray-500">left</span>
+					</h1>
+					<button
+						class="py-4 text-xs font-semibold text-white rounded-full px-7"
+						style="background-color: hsl(176, 50%, 47%)"
+					>
+						{{ blackEdition.selected }}
+					</button>
+				</div>
+				<!-- mahogany box -->
+				<div v-cloak class="p-5 text-left border rounded-lg">
+					<h1 class="font-bold tracking-tighter">
+						{{ mahogany.title }} <br /><span
+							class="font-normal tracking-tight"
+							style="color: hsl(176, 50%, 47%)"
+							>{{ mahogany.pledge }}</span
+						>
+					</h1>
+					<p class="text-sm text-gray-500 py-7">{{ mahogany.description }}</p>
+					<h1 class="pb-6 text-3xl font-bold">
+						{{ mahogany.quantity }}
+						<span class="text-lg text-gray-500">left</span>
+					</h1>
+					<button
+						class="py-4 text-xs font-semibold text-white rounded-full px-7"
+						style="background-color: hsl(176, 50%, 47%)"
+					>
+						{{ mahogany.selected }}
+					</button>
+				</div>
 			</div>
 		</div>
 
