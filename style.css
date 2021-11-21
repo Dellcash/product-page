@@ -12,27 +12,46 @@ body {
 	border-bottom: none;
 }
 input[type="radio"] {
-  /* remove standard background appearance */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  /* create custom radiobutton appearance */
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding: 4px;
-  /* background-color only for content */
-  background-clip: content-box;
-  border: 2px solid #bbbbbb;
-  background-color: #e7e6e7;
-  border-radius: 50%;
+	/* remove standard background appearance */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* create custom radiobutton appearance */
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	padding: 4px;
+	/* background-color only for content */
+	background-clip: content-box;
+	border: 2px solid #bbbbbb;
+	background-color: #e7e6e7;
+	border-radius: 50%;
 }
 /* appearance for checked radiobutton */
 input[type="radio"]:checked {
-  background-color: hsl(176, 72%, 28%);
-  border-color: hsl(176, 72%, 28%);
+	background-color: hsl(176, 72%, 28%);
+	border-color: hsl(176, 72%, 28%);
 }
 /* appearance for radiobutton text */
- input[type="radio"]:checked + label{
-  color: hsl(176, 72%, 28%);
+input[type="radio"]:checked + label {
+	color: hsl(176, 72%, 28%);
+}
+.box-1 {
+	position: absolute;
+	top: 15rem;
+}
+@media (min-width: 768px) {
+	.box-1 {
+		top: 17rem;
+	}
+  .m-logo{
+    right: 0;
+    left: 20rem
+  }
+}
+
+.m-logo {
+	position: absolute;
+	top: -28px;
+	right: 135px;
 }

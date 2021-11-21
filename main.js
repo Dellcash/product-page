@@ -1,4 +1,5 @@
 PetiteVue.createApp({
+  bookmarked: false,
   openMenu: false,
   openModal: false,
   bookmarked: false,

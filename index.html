@@ -36,7 +36,12 @@
 					</button>
 					<!-- desktop mobile -->
 					<div class="hidden mr-40 lg:flex">
-						<h1 v-cloak v-for="tab in tabs" :key="tab" class="ml-5 font-thin text-white">
+						<h1
+							v-cloak
+							v-for="tab in tabs"
+							:key="tab"
+							class="ml-5 font-thin text-white"
+						>
 							{{ tab }}
 						</h1>
 					</div>
@@ -58,25 +63,24 @@
 					</h1>
 				</div>
 			</div>
-			<div>
+			<div class="lg:flex lg:justify-center">
 				<!-- box 1 -->
 				<div
-					class="relative px-5 pt-16 text-center bg-white border rounded-lg w-80 mx-7"
-					style="position: absolute; top: 15rem"
+					class="relative px-5 pt-16 text-center bg-white border rounded-lg w-80 mx-7 lg:w-6/12 box-1"
 				>
 					<img
 						src="./images/logo-mastercraft.svg"
-						style="position: absolute; top: -28px; right: 135px"
+						class="m-logo"
 					/>
-					<h1 class="text-2xl font-semibold leading-7 tracking-tight">
-						Mastercraft Bamboo <br />
+					<h1 class="text-2xl font-semibold leading-7 tracking-tight lg:text-3xl">
+						Mastercraft Bamboo <br class="lg:hidden" />
 						Monitor Riser
 					</h1>
-					<p class="py-6 text-xs font-thin">
+					<p class="py-6 text-xs font-thin lg:text-lg lg:pt-2 lg:text-gray-400 lg:tracking-tight">
 						A beautiful & handcrafted monitor stand to reduce neck and eye
 						strain.
 					</p>
-					<div class="flex items-center justify-between pb-10">
+					<div class="flex items-center justify-between pb-10 lg:mt-2">
 						<button
 							class="px-12 py-4 text-white rounded-full"
 							style="background-color: hsl(176, 50%, 47%)"
@@ -84,14 +88,18 @@
 						>
 							Back this project
 						</button>
-						<object data="./images/icon-bookmark.svg" class=""></object>
+						<object data="./images/icon-bookmark.svg" class="lg:hidden"></object>
+						<button class="relative hidden py-4 pl-10 font-semibold bg-gray-200 rounded-r-full pr-7 lg:flex">
+							Bookmark
+							<object data="./images/icon-bookmark.svg" class="absolute" style="right: 7rem; top:0"></object>
+						</button>
 					</div>
 				</div>
 				<!-- modal -->
 				<div
 					v-show="!successModal"
 					v-if="openModal"
-					class="absolute top-0 mt-32 bg-white rounded-lg filter drop-shadow-lg py-7 px-7 w-80 mx-7"
+					class="absolute top-0 mt-32 bg-white rounded-lg filter drop-shadow-lg py-7 px-7 w-80 mx-7 lg:w-6/12"
 				>
 					<!-- title & close button -->
 					<div class="flex items-center justify-between">
@@ -317,7 +325,7 @@
 				</div>
 				<!-- box 2 -->
 				<div
-					class="absolute py-10 text-center bg-white border rounded-lg mx-7 w-80"
+					class="absolute py-10 text-center bg-white border rounded-lg mx-7 w-80 lg:w-6/12"
 					style="top: 35rem; z-index: -1"
 				>
 					<!-- content -->
@@ -353,7 +361,7 @@
 				</div>
 				<!-- box 3 -->
 				<div
-					class="absolute px-5 py-10 text-left bg-white border rounded-lg mx-7 w-80"
+					class="absolute px-5 py-10 text-left bg-white border rounded-lg mx-7 w-80 lg:w-6/12"
 					style="top: 61.3rem; z-index: -1"
 				>
 					<!-- content -->
