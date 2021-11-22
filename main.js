@@ -39,5 +39,8 @@ PetiteVue.createApp({
     closeSuccessModal(){
       this.successModal = false
       this.openModal = false
-    }
+    },
+    clickOutside(){
+      this.openModal = false  
+    },
 }).mount()
